@@ -1,6 +1,6 @@
-# Arunika — Digital Band Profile Static PoC
+# Whiteroompr — Digital Band Profile Static PoC
 
-Website statis untuk profil band **Arunika** (alternative rock, Bandung). Ini adalah proof of concept public website: tanpa backend, database, npm, atau build.
+Website statis untuk profil band **Whiteroompr** (alternative pop, Bandung). Ini adalah proof of concept public website: tanpa backend, database, npm, atau build.
 
 ## Cara membuka
 
@@ -33,8 +33,10 @@ File `.nojekyll` sudah ada supaya GitHub Pages tidak memproses situs ini dengan 
 - `video.html` — Video, dengan pemutar modal
 - `contact.html` — Contact
 
-## Konten demo
+## Konten
 
-Nama, bio, rilisan, dan jadwal adalah data fiksi untuk presentasi. Email memakai domain `example`, jadi tidak mengarah ke kotak masuk sungguhan.
+Fakta yang dipakai berasal dari katalog publik, catatan rilis, dan pemberitaan pertunjukan: single *Can We Make It* (25 Maret 2022), EP *A Concise Everlasting Love Story, And Everything Turns Blue* (18 Agustus 2023), formasi Faza, Rafly, Rayhan, Pancha, dan Azmy, serta dua panggung Bandung di 2025 (Pestipalin dan Ardan Senja Syahdu Vol. 6).
 
-Foto berasal dari Unsplash. Video konser berasal dari Pexels dan dipakai sebagai placeholder. Di GitHub Pages atau server lokal, pemutar memakai `assets/video/session.mp4`. Jika situs dibuka langsung lewat `file://` dari folder yang namanya mengandung spasi, Chrome tidak memutar file itu, jadi tombol Watch memuat klip yang sama dari `assets/js/clip.js`.
+Yang tidak ketemu dibiarkan sebagai dummy dan ditandai di halaman: email, WhatsApp, Instagram, TikTok, foto Azmy, dua kartu pertunjukan, dan klip video. Nama belakang Rafly, Rayhan, Pancha, dan Azmy tidak dipublikasikan. Sampul dan foto personel yang tampil adalah aset band. Foto konser lain dari Unsplash, dan video dari Pexels.
+
+Di GitHub Pages atau server lokal, pemutar memakai `assets/video/session.mp4`. Jika situs dibuka langsung lewat `file://` dari folder yang namanya mengandung spasi, Chrome tidak memutar file itu, jadi tombol Watch memuat klip yang sama dari `assets/js/clip.js`.

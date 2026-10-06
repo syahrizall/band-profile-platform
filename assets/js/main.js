@@ -141,6 +141,7 @@
       };
       player.addEventListener("canplay", start, { once: true });
       player.src = src;
+      player.load();
       if (player.readyState >= 2) start();
     }).catch(function () {
       if (token !== playToken) return;
