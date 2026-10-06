@@ -37,6 +37,6 @@ File `.nojekyll` sudah ada supaya GitHub Pages tidak memproses situs ini dengan 
 
 Fakta yang dipakai berasal dari katalog publik, catatan rilis, dan pemberitaan pertunjukan: single *Can We Make It* (25 Maret 2022), EP *A Concise Everlasting Love Story, And Everything Turns Blue* (18 Agustus 2023), formasi Faza, Rafly, Rayhan, Pancha, dan Azmy, serta dua panggung Bandung di 2025 (Pestipalin dan Ardan Senja Syahdu Vol. 6).
 
-Yang tidak ketemu dibiarkan sebagai dummy dan ditandai di halaman: email, WhatsApp, Instagram, TikTok, foto Azmy, dua kartu pertunjukan, dan klip video. Nama belakang Rafly, Rayhan, Pancha, dan Azmy tidak dipublikasikan. Sampul dan foto personel yang tampil adalah aset band. Foto konser lain dari Unsplash, dan video dari Pexels.
+Yang terpasang dari sumber band: single *Can We Make It*, EP *A Concise Everlasting Love Story, And Everything Turns Blue*, formasi Faza Alif Muhammad, Rafly Sanjaya, Rayhan, Pancha, dan M Azmy F, film di YouTube `@whiteroompr`, serta Instagram, TikTok, Spotify, dan Apple Music. Panggung yang tertulis: Pestipalin 2025, Ardan Senja Syahdu Vol. 6, dan resital di Luwes Theater, IKJ.
 
-Di GitHub Pages atau server lokal, pemutar memakai `assets/video/session.mp4`. Jika situs dibuka langsung lewat `file://` dari folder yang namanya mengandung spasi, Chrome tidak memutar file itu, jadi tombol Watch memuat klip yang sama dari `assets/js/clip.js`.
+Foto Azmy belum ada, jadi kartunya memakai namanya. Video di halaman Video diputar dari YouTube resmi.

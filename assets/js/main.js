@@ -92,29 +92,17 @@
   const videoStatus = modal ? modal.querySelector("[data-video-status]") : null;
   let videoTrigger = null;
   let playToken = 0;
-  let clipUrl = null;
 
-  function clipObjectUrl() {
-    if (clipUrl) return clipUrl;
-    const encoded = String(window.ARUNIKA_CLIP || "").split(",")[1] || "";
-    const binary = atob(encoded);
-    const bytes = new Uint8Array(binary.length);
-    for (let index = 0; index < binary.length; index += 1) bytes[index] = binary.charCodeAt(index);
-    clipUrl = URL.createObjectURL(new Blob([bytes], { type: "video/mp4" }));
-    return clipUrl;
-  }
-
-  function loadClip() {
-    if (window.ARUNIKA_CLIP) return Promise.resolve(clipObjectUrl());
-    return new Promise(function (resolve, reject) {
-      const script = document.createElement("script");
-      script.src = "assets/js/clip.js";
-      script.onload = function () {
-        resolve(clipObjectUrl());
-      };
-      script.onerror = reject;
-      document.body.appendChild(script);
-    });
+  function youtubeFrame() {
+    let frame = modal.querySelector("iframe");
+    if (!frame) {
+      frame = document.createElement("iframe");
+      frame.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
+      frame.setAttribute("allowfullscreen", "");
+      frame.title = "Whiteroompr video";
+      player.parentNode.appendChild(frame);
+    }
+    return frame;
   }
 
   function openVideo(trigger) {
@@ -122,12 +110,33 @@
     videoTrigger = trigger;
     videoTitle.textContent = trigger.getAttribute("data-title") || "Video";
     videoExternal.href = trigger.getAttribute("data-external");
-    videoStatus.hidden = false;
-    videoStatus.textContent = "Loading video…";
     modal.hidden = false;
     modal.querySelector("[data-video-close]").focus();
 
-    const source = location.protocol === "file:" ? loadClip() : Promise.resolve(trigger.getAttribute("data-src"));
+    const youtube = trigger.getAttribute("data-youtube");
+    if (youtube) {
+      player.pause();
+      player.removeAttribute("src");
+      player.load();
+      player.hidden = true;
+      const frame = youtubeFrame();
+      frame.hidden = false;
+      frame.title = videoTitle.textContent;
+      frame.src = "https://www.youtube.com/embed/" + youtube + "?autoplay=1&rel=0";
+      if (videoStatus) videoStatus.hidden = true;
+      return;
+    }
+
+    const frame = modal.querySelector("iframe");
+    if (frame) {
+      frame.src = "about:blank";
+      frame.hidden = true;
+    }
+    player.hidden = false;
+    videoStatus.hidden = false;
+    videoStatus.textContent = "Loading video…";
+
+    const source = Promise.resolve(trigger.getAttribute("data-src"));
 
     source.then(function (src) {
       if (token !== playToken || modal.hidden) return;
@@ -155,6 +164,12 @@
     player.pause();
     player.removeAttribute("src");
     player.load();
+    const frame = modal.querySelector("iframe");
+    if (frame) {
+      frame.src = "about:blank";
+      frame.hidden = true;
+    }
+    player.hidden = false;
     modal.hidden = true;
     if (videoTrigger) videoTrigger.focus();
   }
@@ -180,7 +195,7 @@
 
   function trapFocus(container, event) {
     const focusable = Array.prototype.slice.call(
-      container.querySelectorAll("a, button, video, [tabindex]:not([tabindex='-1'])")
+      container.querySelectorAll("a, button, video, iframe, [tabindex]:not([tabindex='-1'])")
     ).filter(function (element) {
       return !element.disabled && element.getAttribute("hidden") === null && element.offsetParent !== null;
     });
